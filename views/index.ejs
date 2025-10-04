@@ -1,0 +1,19 @@
+<html>
+
+<head>
+  <title>Simple Payment Page</title>
+</head>
+
+<body>
+  <button id="payBtn">Pay $10</button>
+
+  <script>
+    document.getElementById("payBtn").addEventListener("click", async () => {
+      const response = await fetch("/create-checkout-session", { method: "POST" });
+      const data = await response.json();
+      window.location.href = data.url;
+    });
+  </script>
+</body>
+
+</html>
